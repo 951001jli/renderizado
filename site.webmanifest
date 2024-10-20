@@ -1,6 +1,6 @@
 {
- "short_name": "PWA con MD",
- "name": "PWA con Material Design",
+ "short_name": "Chistecnológico UTN",
+ "name": "PWA de chistes con Material Design",
  "id": "/index.html",
  "start_url": "/index.html",
  "display": "standalone",
@@ -9,18 +9,18 @@
  "display_override": [
   "window-controls-overlay"
  ],
- "description": "PWA con componentes de Material Design.",
+ "description": "Chistecnológico UTN, PWA de chistes con Material Design.",
  "screenshots": [
   {
    "src": "/img/screenshot_horizontal.png",
-   "sizes": "1257x646",
+   "sizes": "2326x1326",
    "type": "image/png",
    "form_factor": "wide",
    "label": "PWA con Material Design"
   },
   {
    "src": "/img/screenshot_vertical.png",
-   "sizes": "595x644",
+   "sizes": "992x1326",
    "type": "image/png",
    "form_factor": "narrow",
    "label": "PWA con Material Design (2)"
@@ -71,7 +71,7 @@
   },
   {
    "src": "/img/maskable_icon.png",
-   "sizes": "3413x3413",
+   "sizes": "862x862",
    "type": "image/png",
    "purpose": "any"
   },
@@ -125,7 +125,7 @@
   },
   {
    "src": "/img/maskable_icon.png",
-   "sizes": "3413x3413",
+   "sizes": "862x862",
    "type": "image/png",
    "purpose": "maskable"
   }

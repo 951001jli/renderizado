@@ -5,7 +5,6 @@
  flex-wrap: nowrap;
  overflow-x: auto;
  position: sticky;
- z-index: 1;
 }
 
 .md-tab.fixed {

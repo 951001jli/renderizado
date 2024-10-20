@@ -1,87 +1,139 @@
 <!DOCTYPE html>
-<html lang="es" class="light dark">
+<html lang="es">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
 
- <meta charset="UTF-8">
- <title>PWA con MD</title>
+  <title>
+    Chistecnológico UTN 🤡
+  </title>
 
- <!-- Resumen para los motores de búsqueda. -->
- <meta name="description" content="Ejemplo de PWA con Material Design">
+  <meta name="theme-color" content="#fffbfe">
+  <link rel="icon" sizes="48x48" href="favicon.ico">
+  <link rel="manifest" href="site.webmanifest">
 
- <script src="js/registraServiceWorker.js"></script>
-
- <meta name="viewport" content="width=device-width">
-
- <!-- Color de la barra de navegación de Chrome en dispositivos móviles. -->
- <meta name="theme-color" content="#fffbfe">
-
- <!-- Ícono para la página web, que normalmente se pone en la raíz del sitio.
-  Puede ser diferente para cada página. -->
- <link rel="icon" sizes="32x32" href="favicon.ico">
-
- <!-- Configuración de la PWA para Chrome, Edge y Safari.
-  Debe ponerse en todas las páginas. -->
- <link rel="manifest" href="site.webmanifest">
-
- <!-- Permite a los navegadores, que como Safari no soportan el estándar
-  completo de custom elementsm, lo cumplan totalmente. Debe ponerse en todas
-  las páginas. -->
- <script src="ungap/custom-elements.js"></script>
-
- <!-- Configuración de todas las páginas con JavaSript. -->
- <script type="module" src="js/configura.js"></script>
- <link rel="stylesheet" href="css/estilos.css">
- <link rel="stylesheet" href="css/transicion_completa.css">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="ungap/custom-elements.js">
+  </script>
+  <script type="module" src="js/configura.js"></script>
 
 </head>
 
 <body>
 
- <md-top-app-bar class="center-aligned">
+  <form id="form" novalidate onsubmit="procesa(event)">
 
-  <h1>PWA con MD</h1>
+    <md-top-app-bar adicional="tab" headline="headline">
+      <h1 class="centrar-texto">🤡 Chistecnológico UTN 🤡</h1>
 
-  <button is="md-menu-button" slot="navigation"></button>
+    </md-top-app-bar>
+    <nav-tab-fixed id="tab"></nav-tab-fixed>
 
-  <button type="button" class="md-standard-icon-button avatar" title="Perfil"
-    slot="action">
-   <span class="material-symbols-outlined">account_circle</span>
-  </button>
+    <main>
 
- </md-top-app-bar>
+      <p class="md-filled-text-field">
+        <md-select-menu id="selectIntegrante" required aria-labelledby="etiquetaIntegrante"
+          options="opcionesDeIntegrante" oninput="copiaMensajes()">
+        </md-select-menu>
+        <span id="etiquetaIntegrante" accesskey="G">
+          Integrante del equipo 🤡
+        </span>
+        <small id="supportingGenero">
+          * Obligatorio
+        </small>
+      </p>
 
- <main>
-  <p>
-   Esta es la página principal de la app. Las X que siguen son para que veas
-   como se comporta cuando se hace scroll.
-  </p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
-  <p>x</p>
- </main>
+      <p>
+        <button class="md-filled-button" style="width: 100%;">
+          Mostrar chiste 🤡
+        </button>
+      </p>
 
- <nav-drw></nav-drw>
+    </main>
+
+    <md-options-menu id="opcionesDeIntegrante" aria-label="Opciones de integrantes">
+
+      <span data-value="" title="Selecciona un integrante">
+      </span>
+
+      <span data-value="liz">
+        🤡 Garduño Aguilar Norma Lizet 🤡
+      </span>
+
+      <span data-value="luis">
+        🤡 Hernández Izquierdo José Luis 🤡
+      </span>
+
+      <span data-value="bran">
+        🤡 Hernández Pérez Brandon Jesús 🤡
+      </span>
+
+      <span data-value="edgr">
+        🤡 Ortíz Trejo Edgar Alejandro 🤡
+      </span>
+
+    
+    </md-options-menu>
+
+    <nav-drw id="nav"></nav-drw>
+
+  </form>
+
+  <script type="module">
+    import {
+      muestraError
+    } from "./lib/js/muestraError.js"
+    import {
+      muestraTextoDeAyuda
+    } from "./lib/js/muestraTextoDeAyuda.js"
+
+    function copiaMensajes() {
+      muestraTextoDeAyuda(
+        selectIntegrante, supportingGenero,
+        "* Obligatorio")
+    }
+    window["copiaMensajes"] =
+      copiaMensajes
+
+    /**
+     * @param {SubmitEvent} evt
+     */
+    function procesa(evt) {
+      evt.preventDefault()
+      try {
+        copiaMensajes()
+        if (
+          selectIntegrante.validity.valid) {
+          const integrante =
+            selectIntegrante.value
+          const resultado =
+            recomienda(integrante)
+          alert(resultado)
+        }
+      } catch (e) {
+        muestraError(e)
+      }
+    }
+    window["procesa"] = procesa
+
+    /** @param {string} integrante */
+    function recomienda(integrante) {
+      if (integrante === "liz") {
+        return "¿Qué le dice un bit al otro? " +
+          "Nos vemos en el bus."
+      } else if (integrante === "luis") {
+        return "¿Qué hace una impresora enfadada? " +
+          "¡Lanza páginas en blanco de pura rabia!"
+      } else if (integrante === "bran") {
+        return "¿Qué le dice un GIF a otro GIF? " +
+          "¡Anímate!"
+      } else if (integrante === "edgr") {
+        return "¿Qué hace una computadora cuando tiene hambre? " +
+          "Se come un byte."
+      } 
+    }
+  </script>
 
 </body>
 

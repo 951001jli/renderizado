@@ -16,7 +16,7 @@ export class NavBar extends HTMLElement {
     Pestañas
    </a>
 
-   <a id="navbar" ${resaltaSiEstasEn(["/navbar.html"])} href="navbar.html">
+   <a ${resaltaSiEstasEn(["/navbar.html"])} href="navbar.html">
     <span class="material-symbols-outlined">bottom_navigation</span>
     Barra
    </a>
