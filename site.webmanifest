@@ -1,133 +1,133 @@
 {
- "short_name": "Chistecnológico UTN",
- "name": "PWA de chistes con Material Design",
- "id": "/index.html",
- "start_url": "/index.html",
- "display": "standalone",
- "theme_color": "#fffbfe",
- "background_color": "#fffbfe",
- "display_override": [
-  "window-controls-overlay"
- ],
- "description": "Chistecnológico UTN, PWA de chistes con Material Design.",
- "screenshots": [
-  {
-   "src": "/img/screenshot_horizontal.png",
-   "sizes": "2326x1326",
-   "type": "image/png",
-   "form_factor": "wide",
-   "label": "PWA con Material Design"
-  },
-  {
-   "src": "/img/screenshot_vertical.png",
-   "sizes": "992x1326",
-   "type": "image/png",
-   "form_factor": "narrow",
-   "label": "PWA con Material Design (2)"
-  }
- ],
- "icons": [
-  {
-   "src": "/img/maskable_icon_x48.png",
-   "sizes": "48x48",
-   "type": "image/png",
-   "purpose": "any"
-  },
-  {
-   "src": "/img/maskable_icon_x72.png",
-   "sizes": "72x72",
-   "type": "image/png",
-   "purpose": "any"
-  },
-  {
-   "src": "/img/maskable_icon_x96.png",
-   "sizes": "96x96",
-   "type": "image/png",
-   "purpose": "maskable"
-  },
-  {
-   "src": "/img/maskable_icon_x128.png",
-   "sizes": "128x128",
-   "type": "image/png",
-   "purpose": "any"
-  },
-  {
-   "src": "/img/maskable_icon_x192.png",
-   "sizes": "192x192",
-   "type": "image/png",
-   "purpose": "any"
-  },
-  {
-   "src": "/img/maskable_icon_x384.png",
-   "sizes": "384x384",
-   "type": "image/png",
-   "purpose": "any"
-  },
-  {
-   "src": "/img/maskable_icon_x512.png",
-   "sizes": "512x512",
-   "type": "image/png",
-   "purpose": "any"
-  },
-  {
-   "src": "/img/maskable_icon.png",
-   "sizes": "862x862",
-   "type": "image/png",
-   "purpose": "any"
-  },
-  {
-   "src": "/img/icono2048.png",
-   "sizes": "2048x2048",
-   "type": "image/png",
-   "purpose": "any"
-  },
-  {
-   "src": "/img/maskable_icon_x48.png",
-   "sizes": "48x48",
-   "type": "image/png",
-   "purpose": "maskable"
-  },
-  {
-   "src": "/img/maskable_icon_x72.png",
-   "sizes": "72x72",
-   "type": "image/png",
-   "purpose": "maskable"
-  },
-  {
-   "src": "/img/maskable_icon_x96.png",
-   "sizes": "96x96",
-   "type": "image/png",
-   "purpose": "maskable"
-  },
-  {
-   "src": "/img/maskable_icon_x128.png",
-   "sizes": "128x128",
-   "type": "image/png",
-   "purpose": "maskable"
-  },
-  {
-   "src": "/img/maskable_icon_x192.png",
-   "sizes": "192x192",
-   "type": "image/png",
-   "purpose": "maskable"
-  },
-  {
-   "src": "/img/maskable_icon_x384.png",
-   "sizes": "384x384",
-   "type": "image/png",
-   "purpose": "maskable"
-  },
-  {
-   "src": "/img/maskable_icon_x512.png",
-   "sizes": "512x512",
-   "type": "image/png",
-   "purpose": "maskable"
-  },
-  {
-   "src": "/img/maskable_icon.png",
-   "sizes": "862x862",
-   "type": "image/png",
-   "purpose": "maskable"
-  }
- ]
-}
+    "short_name": "Geo 11:11 con MD",
+    "name": "PWA con Material Design Geo 11:11 app",
+    "id": "/index.html",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "theme_color": "#fffbfe",
+    "background_color": "#fffbfe",
+    "display_override": [
+     "window-controls-overlay"
+    ],
+    "description": "PWA de localización, archivos y cámara con componentes de Material Design.",
+    "screenshots": [
+     {
+      "src": "/img/screenshot_horizontal.png",
+      "sizes": "2188x1328",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "PWA con Material Design"
+     },
+     {
+      "src": "/img/screenshot_vertical.png",
+      "sizes": "984x1390",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "PWA con Material Design (2)"
+     }
+    ],
+    "icons": [
+     {
+      "src": "/img/maskable_icon_x48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+     },
+     {
+      "src": "/img/maskable_icon_x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+     },
+     {
+      "src": "/img/maskable_icon_x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable"
+     },
+     {
+      "src": "/img/maskable_icon_x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+     },
+     {
+      "src": "/img/maskable_icon_x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+     },
+     {
+      "src": "/img/maskable_icon_x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+     },
+     {
+      "src": "/img/maskable_icon_x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+     },
+     {
+      "src": "/img/maskable_icon.png",
+      "sizes": "862x862",
+      "type": "image/png",
+      "purpose": "any"
+     },
+     {
+      "src": "/img/icono2048.png",
+      "sizes": "2048x2048",
+      "type": "image/png",
+      "purpose": "any"
+     },
+     {
+      "src": "/img/maskable_icon_x48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "maskable"
+     },
+     {
+      "src": "/img/maskable_icon_x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable"
+     },
+     {
+      "src": "/img/maskable_icon_x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable"
+     },
+     {
+      "src": "/img/maskable_icon_x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable"
+     },
+     {
+      "src": "/img/maskable_icon_x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+     },
+     {
+      "src": "/img/maskable_icon_x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable"
+     },
+     {
+      "src": "/img/maskable_icon_x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+     },
+     {
+      "src": "/img/maskable_icon.png",
+      "sizes": "862x862",
+      "type": "image/png",
+      "purpose": "maskable"
+     }
+    ]
+   }
