@@ -59,6 +59,60 @@
   });
 </script>
 
+
+
+<!--   //////////////////   -->
+
+
+<h1>Servicio que procesa un formulario</h1>
+
+<form onsubmit="procesaForm(event) ">
+
+ <p>
+  <label>
+   Saludo:
+   <!-- Como este input tiene name="saludo", su valor se recupera en el
+    servidor con leeTexto("saludo") -->
+   <input name="saludo">
+  </label>
+ </p>
+
+ <p>
+  <label>
+   Nombre:
+   <!-- Como este input tiene name="nombre", su valor se recupera en el
+    servidor con leeTexto("nombre") -->
+   <input name="nombre">
+  </label>
+ </p>
+
+ <p><button type="submit">Procesa</button></p>
+
+</form>
+
+<script type="module">
+
+ import { exportaAHtml } from "./lib/js/js/exportaAHtml.js"
+ import { muestraError } from "./lib/js/js/muestraError.js"
+ import { submitForm } from "./lib/js/js/submitForm.js"
+
+ /**
+  * @param {Event} event
+  */
+ async function procesaForm(event) {
+  try {
+   const respuesta =
+    await submitForm(
+     "srv/procesa.php", event)
+   alert(respuesta.body)
+  } catch (error) {
+   muestraError(error)
+  }
+ }
+ exportaAHtml(procesaForm)
+
+</script>
+
 </body>
 
 </html>
