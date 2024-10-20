@@ -18,6 +18,12 @@
   </script>
   <script type="module" src="js/configura.js"></script>
 
+
+  
+ <script type="module" src="lib/js/js/consumeJson.js"></script>
+ <script type="module" src="lib/js/js/muestraObjeto.js"></script>
+ <script type="module" src="lib/js/js/muestraError.js"></script>
+
 </head>
 
 <body>
@@ -134,6 +140,21 @@
       } 
     }
   </script>
+
+</body>
+
+
+
+<body onload="consumeJson('srv/render.php')
+  .then(respuesta => muestraObjeto(document, respuesta.body))
+  .catch(muestraError)">
+
+ <h1>Render en el servidor</h1>
+
+ <dl id="lista">
+  <dt>Cargando&hellip;</dt>
+  <dd><progress max="100">Cargando&hellip;</progress></dd>
+ </dl>
 
 </body>
 
