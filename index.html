@@ -4,7 +4,7 @@
 <head>
 
  <meta charset="UTF-8">
- <title>Geolocalización - Geo11:11 </title>
+ <title>Formulario - 11:11 </title>
 
  <script src="js/registraServiceWorker.js"></script>
 
@@ -28,65 +28,37 @@
 
  </md-top-app-bar>
 
- <h1 id="headline">Geolocalización</h1>
+ <h1 id="headline">Servicio que procesa un formulario</h1>
 
  <nav-tab-fixed id="tab"></nav-tab-fixed>
 
  <main>
+
+  <form onsubmit="procesaForm(event) ">
  
-  <p>
-    <label class="md-filled-text-field float">
-      <output id="latitud">Cargando...</output>
-     <span>Latitud</span>
-    </label>
-   </p>
 
+
+
+
+    <p class="md-filled-text-field">
+ 
+      <input name="saludo" required placeholder="Saludo*">
+      <label for="saludo">Saludo*</label>
+      <small>*Requerido</small>
    
-  <p>
-    <label class="md-filled-text-field float">
-      <output id="longitud">Cargando...</output>
-     <span>Longitud</span>
-    </label>
+    </p>
+    
+    <p class="md-filled-text-field">
+    
+     <input name="nombre" required placeholder="Nombre*">
+     <label for="nombre">Nombre*</label>
+     <small>*Requerido</small>
+   
    </p>
    
- </main>
-
-
- <script>
-  navigator.geolocation.watchPosition(p => {
-    document.getElementById('latitud').value = p.coords.latitude;
-    document.getElementById('longitud').value = p.coords.longitude;
-  });
-</script>
-
-
-
-<!--   //////////////////   -->
-
-
-<h1>Servicio que procesa un formulario</h1>
-
-<form onsubmit="procesaForm(event) ">
-
- <p>
-  <label>
-   Saludo:
-   <!-- Como este input tiene name="saludo", su valor se recupera en el
-    servidor con leeTexto("saludo") -->
-   <input name="saludo">
-  </label>
- </p>
-
- <p>
-  <label>
-   Nombre:
-   <!-- Como este input tiene name="nombre", su valor se recupera en el
-    servidor con leeTexto("nombre") -->
-   <input name="nombre">
-  </label>
- </p>
-
- <p><button type="submit">Procesa</button></p>
+    <p><button  class="md-outline-button" type="submit">Procesa</button></p>
+   
+    
 
 </form>
 
@@ -112,6 +84,10 @@
  exportaAHtml(procesaForm)
 
 </script>
+
+
+
+
 
 </body>
 

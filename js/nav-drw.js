@@ -15,10 +15,11 @@ export class NavDrw extends MdNavigationDrawer {
     Inicio
    </a>
 
-   <a ${resaltaSiEstasEn(["/archivos.html"])} href="archivos.html">
-    <span class="material-symbols-outlined">add_photo_alternate</span>
-    Archivos
+    <a ${resaltaSiEstasEn(["/two-line.html"])} href="two-line.html">
+    <span class="material-symbols-outlined">format_list_numbered</span>
+    Two-line
    </a>
+
 
    <a ${resaltaSiEstasEn(["/camara.html"])}
      href="camara.html">

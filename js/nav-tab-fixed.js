@@ -11,15 +11,15 @@ export class NavTabFixed extends HTMLElement {
     Inicio
    </a>
 
-   <a ${resaltaSiEstasEn(["/archivos.html"])} href="archivos.html">
-    <span class="material-symbols-outlined">add_photo_alternate</span>
-    Archivos
+   <a ${resaltaSiEstasEn(["/cliente.html"])} href="cliente.html">
+    <span class="material-symbols-outlined">user_attributes</span>
+    Cliente
    </a>
 
-   <a ${resaltaSiEstasEn(["/camara.html"])}
-     href="camara.html">
-    <span class="material-symbols-outlined">add_a_photo</span>
-    Cámara
+   <a ${resaltaSiEstasEn(["/servidor.html"])}
+     href="servidor.html">
+    <span class="material-symbols-outlined">smb_share</span>
+    Servidor
    </a>
 
    <a ${resaltaSiEstasEn(["/ayuda.html"])} href="ayuda.html">
