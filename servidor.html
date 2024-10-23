@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="es" class="light dark">
 
 <head>
@@ -44,7 +44,7 @@
           Lizet Garduño
          </span>
          <span class="supporting">
-          Chiste de Liz
+            ¿Cuál es el colmo de Batman? Que le Robin. 🤡🤡🤡
          </span>
         </a>
       
@@ -56,7 +56,7 @@
           Luis Izquierdo
          </span>
          <span class="supporting">
-          Chiste de Luis
+            ¿Qué tiene Darth Vader en la nevera? Helado Oscuro. 🤡🤡🤡
          </span>
         </a>
       
@@ -68,9 +68,20 @@
           Jesús Hernández
          </span>
          <span class="supporting">
-          Chiste de Jesús
+            ¿Cómo se llama el campeón de buceo japonés? Tokofondo. 🤡🤡🤡
          </span>
         </a>
+
+        <a target="_blank" rel=”noopener noreferrer” >
+            <figure>
+             <img alt="Perro" src="img/avatar.jpg">
+            </figure>
+            <span class="headline">
+Yanitzin Martinez            </span>
+            <span class="supporting">
+                Sí los zombies se deshacen con el paso del tiempo ¿zombiodegradables? 🤡🤡🤡
+            </span>
+           </a>
       
         <a target="_blank" rel=”noopener noreferrer” >
          <figure>
@@ -80,7 +91,7 @@
           Edgar Ortíz
          </span>
          <span class="supporting">
-          Chiste de Edgar
+            ¿Cómo se dice disparo en árabe? Ahí-va-la-bala. 🤡🤡🤡
          </span>
         </a>
       
@@ -89,5 +100,36 @@
        </div>
  
  </body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width">
+
+ <title>Render en el servidor</title>
+
+ <script type="module" src="lib/js/consumeJson.js"></script>
+ <script type="module" src="lib/js/muestraObjeto.js"></script>
+ <script type="module" src="lib/js/muestraError.js"></script>
+
+</head>
+
+<body onload="consumeJson('srv/render.php')
+  .then(respuesta => muestraObjeto(document, respuesta.body))
+  .catch(muestraError)">
+
+ <h1>Render en el servidor</h1>
+
+ <dl id="lista">
+  <dt>Cargando&hellip;</dt>
+  <dd><progress max="100">Cargando&hellip;</progress></dd>
+ </dl>
+
+</body>
 
 </html>

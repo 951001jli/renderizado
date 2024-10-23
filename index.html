@@ -3,91 +3,111 @@
 
 <head>
 
- <meta charset="UTF-8">
- <title>Formulario - 11:11 </title>
+  <meta charset="UTF-8">
+  <title>Formulario - 11:11 </title>
 
- <script src="js/registraServiceWorker.js"></script>
+  <script src="js/registraServiceWorker.js"></script>
 
- <meta name="viewport" content="width=device-width">
- <meta name="theme-color" content="#fffbfe">
- <link rel="icon" sizes="48x48" href="favicon.ico">
- <link rel="manifest" href="site.webmanifest">
- <script src="ungap/custom-elements.js"></script>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#fffbfe">
+  <link rel="icon" sizes="48x48" href="favicon.ico">
+  <link rel="manifest" href="site.webmanifest">
+  <script src="ungap/custom-elements.js"></script>
 
- <script type="module" src="js/configura.js"></script>
- <link rel="stylesheet" href="css/estilos.css">
- <link rel="stylesheet" href="css/transicion_pestanas.css"> 
+  <script type="module" src="js/configura.js"></script>
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/transicion_pestanas.css">
 
 </head>
 
+<md-top-app-bar adicional="tab" headline="headline">
+
+
+
+</md-top-app-bar>
+
+<h1 id="headline">Servicio que procesa un formulario</h1>
+
+<nav-tab-fixed id="tab"></nav-tab-fixed>
+
 <body>
 
- <md-top-app-bar adicional="tab" headline="headline">
+  <form id="form" novalidate onsubmit="procesa(event)">
 
- 
+    <main>
 
- </md-top-app-bar>
+      <p>
+        <span class="md-filled-text-field" accesskey="G">
+          <md-select-menu id="selectIntegrante" required options="opcionesDeIntegrantes"
+            oninput="copiaMensajes()"></md-select-menu>
+          <span>Integrante *</span>
+          <small id="supportingIntegrante">Obligatorio</small>
+        </span>
+      </p>
 
- <h1 id="headline">Servicio que procesa un formulario</h1>
+      <p>
+        <button class="md-filled-button" style="width: 100%;">Chiste</button>
+      </p>
 
- <nav-tab-fixed id="tab"></nav-tab-fixed>
+    </main>
 
- <main>
+    <md-options-menu id="opcionesDeIntegrantes" aria-label="Opciones de Integrantes de 11:11">
+      <span data-value="" title="Selecciona un integrante"></span>
+      <span data-value="lys">🤡 - Garduño Aguilar Norma Lizet </span>
+      <span data-value="luis">🤡 - Hernández Izquierdo José Luis</span>
+      <span data-value="bran">🤡 - Hernández Pérez Brandon de Jesús </span>
+      <span data-value="yani">🤡 - Martínez Basilio Yanitzin</span>
+      <span data-value="edgar">🤡 - Ortíz Trejo Edgar Alejandro </span>
+    </md-options-menu>
 
-  <form onsubmit="procesaForm(event) ">
- 
+    <nav-drw></nav-drw>
 
+  </form>
 
+  <script type="module">
+    import { muestraTextoDeAyuda } from "./lib/js/muestraTextoDeAyuda.js"
+    import { exportaAHtml } from "./lib/js/exportaAHtml.js"
+    import { muestraError } from "./lib/js/muestraError.js"
 
+    function copiaMensajes() {
+      muestraTextoDeAyuda(selectIntegrante, supportingIntegrante, "Obligatorio")
+    }
+    exportaAHtml(copiaMensajes)
 
-    <p class="md-filled-text-field">
- 
-      <input name="saludo" required placeholder="Saludo*">
-      <label for="saludo">Saludo*</label>
-      <small>*Requerido</small>
-   
-    </p>
-    
-    <p class="md-filled-text-field">
-    
-     <input name="nombre" required placeholder="Nombre*">
-     <label for="nombre">Nombre*</label>
-     <small>*Requerido</small>
-   
-   </p>
-   
-    <p><button  class="md-outline-button" type="submit">Procesa</button></p>
-   
-    
+    /**
+     * @param {SubmitEvent} evt
+     */
+    function procesa(evt) {
+      evt.preventDefault()
+      try {
+        copiaMensajes()
+        if (
+          selectIntegrante.validity.valid) {
+          const integrante = selectIntegrante.value
+          const resultado = recomienda(integrante)
+          alert(resultado)
+        }
+      } catch (e) {
+        muestraError(e)
+      }
+    }
+    exportaAHtml(procesa)
 
-</form>
-
-<script type="module">
-
- import { exportaAHtml } from "./lib/js/js/exportaAHtml.js"
- import { muestraError } from "./lib/js/js/muestraError.js"
- import { submitForm } from "./lib/js/js/submitForm.js"
-
- /**
-  * @param {Event} event
-  */
- async function procesaForm(event) {
-  try {
-   const respuesta =
-    await submitForm(
-     "srv/procesa.php", event)
-   alert(respuesta.body)
-  } catch (error) {
-   muestraError(error)
-  }
- }
- exportaAHtml(procesaForm)
-
-</script>
-
-
-
-
+    /** @param {string} integrante */
+    function recomienda(integrante) {
+      if (integrante === "lys") {
+        return "¿Cuál es el colmo de Batman? Que le Robin. 🤡🤡🤡"
+      } else if (integrante === "luis") {
+        return " ¿Qué tiene Darth Vader en la nevera? Helado Oscuro. 🤡🤡🤡"
+      } else if (integrante === "bran") {
+        return "¿Cómo se llama el campeón de buceo japonés? Tokofondo. 🤡🤡🤡"
+      } else if (integrante === "yani") {
+        return " Sí los zombies se deshacen con el paso del tiempo ¿zombiodegradables? 🤡🤡🤡"
+      } else if (integrante === "edgar") {
+        return "¿Cómo se dice disparo en árabe? Ahí-va-la-bala. 🤡🤡🤡"
+      }
+    }
+  </script>
 
 </body>
 
