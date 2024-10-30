@@ -32,8 +32,11 @@
 
  <main>
  
-   
-  <ul class="md-list">
+  <ul id="lista" class="md-list">
+    <dt>Cargando…</dt>
+    <dd><progress max="100">Cargando…</progress></dd>
+  </ul>
+  <!-- <ul class="md-list">
 
  
  
@@ -87,13 +90,41 @@
         </span>
        </li>
  
-   </ul>
+   </ul> -->
   
  
   </main>
  
   <nav-drw id="nav"></nav-drw>
- 
+  <script type="module">
+    import { exportaAHtml } from "./lib/js/exportaAHtml.js"
+    import { consumeJson } from "./lib/js/consumeJson.js"
+    import { htmlentities } from "./lib/js/htmlentities.js"
+    import { muestraError } from "./lib/js/muestraError.js"
+    async function descargaDatos() {
+     try {
+      const respuesta = await consumeJson("srv/lista.php")
+      // Genera el código HTML de la lista.
+      let render = ""
+      for (const modelo of respuesta.body) {
+       /* Codifica nombre y chiste para que cambie los caracteres especiales y
+        * el texto no se pueda interpretar como HTML. Esta técnica evita la
+        * inyección de código. */
+       const nombre =
+        typeof modelo.nombre === "string" ? htmlentities(modelo.nombre) : ""
+       const chiste =
+        typeof modelo.chiste === "string" ? htmlentities(modelo.chiste) : ""
+       render += /* html */
+        `<dt>${nombre}</dt>
+         <dd>${chiste}</dd>`
+      }
+      lista.innerHTML = render
+     } catch (error) {
+      muestraError(error)
+     }
+    }
+    exportaAHtml(descargaDatos)
+   </script>
  </body>
 
 </html>
