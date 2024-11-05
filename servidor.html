@@ -1,134 +1,42 @@
-<!-- <!DOCTYPE html>
-<html lang="es" class="light dark">
-
-<head>
-
- <meta charset="UTF-8">
- <title>Servidor two-line - 11:11 </title>
-
- <script src="js/registraServiceWorker.js"></script>
-
- <meta name="viewport" content="width=device-width">
- <meta name="theme-color" content="#fffbfe">
- <link rel="icon" sizes="48x48" href="favicon.ico">
- <link rel="manifest" href="site.webmanifest">
- <script src="ungap/custom-elements.js"></script>
-
- <script type="module" src="js/configura.js"></script>
- <link rel="stylesheet" href="css/estilos.css">
- <link rel="stylesheet" href="css/transicion_pestanas.css"> 
-
-</head>
-
-<body>
-
- <md-top-app-bar adicional="tab" headline="headline">
-
- 
-
- </md-top-app-bar>
-
- <h1 id="headline">Listas servidor two-line</h1>
-
- <nav-tab-fixed id="tab"></nav-tab-fixed>
-
- <main>
- 
-    <div class="md-cards">
-
-        <a target="_blank" rel=”noopener noreferrer” >
-         <figure>
-          <img alt="Lobo" src="img/avatar.jpg">
-         </figure>
-         <span class="headline">
-          Lizet Garduño
-         </span>
-         <span class="supporting">
-            ¿Cuál es el colmo de Batman? Que le Robin. 🤡🤡🤡
-         </span>
-        </a>
-      
-        <a target="_blank" rel=”noopener noreferrer” >
-         <figure>
-          <img alt="Buho" src="img/avatar.jpg">
-         </figure>
-         <span class="headline">
-          Luis Izquierdo
-         </span>
-         <span class="supporting">
-            ¿Qué tiene Darth Vader en la nevera? Helado Oscuro. 🤡🤡🤡
-         </span>
-        </a>
-      
-        <a target="_blank" rel=”noopener noreferrer” >
-         <figure>
-          <img alt="Perro" src="img/avatar.jpg">
-         </figure>
-         <span class="headline">
-          Jesús Hernández
-         </span>
-         <span class="supporting">
-            ¿Cómo se llama el campeón de buceo japonés? Tokofondo. 🤡🤡🤡
-         </span>
-        </a>
-
-        <a target="_blank" rel=”noopener noreferrer” >
-            <figure>
-             <img alt="Perro" src="img/avatar.jpg">
-            </figure>
-            <span class="headline">
-Yanitzin Martinez            </span>
-            <span class="supporting">
-                Sí los zombies se deshacen con el paso del tiempo ¿zombiodegradables? 🤡🤡🤡
-            </span>
-           </a>
-      
-        <a target="_blank" rel=”noopener noreferrer” >
-         <figure>
-          <img alt="Gato" src="img/avatar.jpg">
-         </figure>
-         <span class="headline">
-          Edgar Ortíz
-         </span>
-         <span class="supporting">
-            ¿Cómo se dice disparo en árabe? Ahí-va-la-bala. 🤡🤡🤡
-         </span>
-        </a>
-      
-        
-      
-       </div>
- 
- </body>
-
-</html> -->
-
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width">
+   <title>Lista de chistes - Chis11:11</title>
 
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width">
+   <link rel="stylesheet" href="css/estilos.css"> <!-- Aquí incluirás los estilos de Material Design -->
+   <link rel="stylesheet" href="css/transicion_pestanas.css">
 
- <title>Render en el servidor</title>
-
- <script type="module" src="lib/js/consumeJson.js"></script>
- <script type="module" src="lib/js/muestraObjeto.js"></script>
- <script type="module" src="lib/js/muestraError.js"></script>
-
+   <script type="module" src="lib/js/consumeJson.js"></script>
+   <script type="module" src="lib/js/muestraObjeto.js"></script>
+   <script type="module" src="lib/js/muestraError.js"></script>
+   <script type="module" src="js/configura.js"></script>
 </head>
+
 
 <body onload="consumeJson('srv/render.php')
   .then(respuesta => muestraObjeto(document, respuesta.body))
   .catch(muestraError)">
 
- <h1>Render en el servidor</h1>
+   <md-top-app-bar adicional="tab" headline="headline">
+   </md-top-app-bar>
+   <h1 id="headline">Listas servidor two-line</h1>
 
- <dl id="lista">
-  <dt>Cargando&hellip;</dt>
-  <dd><progress max="100">Cargando&hellip;</progress></dd>
- </dl>
+   <nav-tab-fixed id="tab"></nav-tab-fixed>
+   <main>
+      <ul id="lista" class="md-list">
+         <li class="md-two-line">
+            <span class="headline">Cargando&hellip;</span>
+            <span class="supporting">
+               <progress max="100">Cargando&hellip;</progress>
+            </span>
+         </li>
+      </ul>
+   </main>
+
+   <nav-drw></nav-drw>
 
 </body>
 
