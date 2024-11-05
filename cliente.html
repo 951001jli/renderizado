@@ -4,7 +4,7 @@
 <head>
 
  <meta charset="UTF-8">
- <title>Cliente two-line - 11:11 </title>
+ <title>Cliente two-line - Chis11:11 </title>
 
  <script src="js/registraServiceWorker.js"></script>
 
@@ -20,7 +20,7 @@
 
 </head>
 
-<body>
+<body onload="descargaDatos()">
 
  <md-top-app-bar adicional="tab" headline="headline">
 
@@ -29,102 +29,47 @@
  <h1 id="headline">Listas cliente two-line</h1>
 
  <nav-tab-fixed id="tab"></nav-tab-fixed>
-
  <main>
- 
-  <ul id="lista" class="md-list">
-    <dt>Cargando…</dt>
-    <dd><progress max="100">Cargando…</progress></dd>
-  </ul>
-  <!-- <ul class="md-list">
+     <ul class="md-list" id="lista">
+         <li class="md-two-line">
+             <span class="headline">Cargando&hellip;</span>
+             <span class="supporting"><progress max="100">Cargando&hellip;</progress></span>
+         </li>
+     </ul>
+ </main>
 
- 
- 
-     <li class="md-two-line avatar">
-       <img alt="Avatar de Ana" src="img/avatar.jpg">
-       <span class="headline">
-        Lizet Garduño
-       </span>
-       <span class="supporting">
-        ¿Cuál es el colmo de Batman? Que le Robin.
-       </span>
-    </li>
- 
-    <li class="md-two-line avatar">
-        <img alt="Avatar de Ana" src="img/avatar.jpg">
-        <span class="headline">
-         Luis Izquierdo
-        </span>
-        <span class="supporting">
-          ¿Qué tiene Darth Vader en la nevera? Helado Oscuro.
-        </span>
-       </li>
- 
-       <li class="md-two-line avatar">
-        <img alt="Avatar de Ana" src="img/avatar.jpg">
-        <span class="headline">
-         Brandon Hernández
-        </span>
-        <span class="supporting">
-          ¿Cómo se llama el campeón de buceo japonés? Tokofondo.
-        </span>
-       </li>
-
-       <li class="md-two-line avatar">
-        <img alt="Avatar de Ana" src="img/avatar.jpg">
-        <span class="headline">
-         Yanitzin Martinez
-        </span>
-        <span class="supporting">
-          Sí los zombies se deshacen con el paso del tiempo ¿zombiodegradables?
-        </span>
-       </li>
-
-       <li class="md-two-line avatar">
-        <img alt="Avatar de Ana" src="img/avatar.jpg">
-        <span class="headline">
-         Edgar Ortíz
-        </span>
-        <span class="supporting">
-        ¿Cómo se dice disparo en árabe? Ahí-va-la-bala.
-        </span>
-       </li>
- 
-   </ul> -->
-  
- 
-  </main>
- 
-  <nav-drw id="nav"></nav-drw>
-  <script type="module">
+   <script type="module">
     import { exportaAHtml } from "./lib/js/exportaAHtml.js"
     import { consumeJson } from "./lib/js/consumeJson.js"
     import { htmlentities } from "./lib/js/htmlentities.js"
     import { muestraError } from "./lib/js/muestraError.js"
+
     async function descargaDatos() {
-     try {
-      const respuesta = await consumeJson("srv/lista.php")
-      // Genera el código HTML de la lista.
-      let render = ""
-      for (const modelo of respuesta.body) {
-       /* Codifica nombre y chiste para que cambie los caracteres especiales y
-        * el texto no se pueda interpretar como HTML. Esta técnica evita la
-        * inyección de código. */
-       const nombre =
-        typeof modelo.nombre === "string" ? htmlentities(modelo.nombre) : ""
-       const chiste =
-        typeof modelo.chiste === "string" ? htmlentities(modelo.chiste) : ""
-       render += /* html */
-        `<dt>${nombre}</dt>
-         <dd>${chiste}</dd>`
-      }
-      lista.innerHTML = render
-     } catch (error) {
-      muestraError(error)
-     }
+        try {
+            const respuesta = await consumeJson("srv/lista.php")
+            // Genera el código HTML de la lista.
+            let render = ""
+            for (const modelo of respuesta.body) {
+                const nombre = typeof modelo.nombre === "string" ? htmlentities(modelo.nombre) : ""
+                const chiste = typeof modelo.chiste === "string" ? htmlentities(modelo.chiste) : ""
+                
+                render += /* html */
+                `<li class="md-two-line">
+                    <span class="headline">${nombre}</span>
+                    <span class="supporting">${chiste}</span>
+                </li>`
+            }
+            document.getElementById("lista").innerHTML = render
+        } catch (error) {
+            muestraError(error)
+        }
     }
+
     exportaAHtml(descargaDatos)
-   </script>
+</script>
+ 
+  <nav-drw id="nav"></nav-drw>
+  
  </body>
 
 </html>

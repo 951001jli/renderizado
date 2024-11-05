@@ -31,7 +31,8 @@
 
 <body>
 
-  <form id="chisteForm" novalidate onsubmit="procesa(event)" enctype="mutipart/form-data">
+  <form id="chisteForm" novalidate onsubmit="procesa(event)">
+
 
     <main>
 
@@ -71,8 +72,10 @@
 
     // Función para mostrar mensajes de ayuda
     function copiaMensajes() {
+      const nombre = document.getElementById('nombre');
       muestraTextoDeAyuda(nombre, supportingIntegrante, "* Obligatorio");
     }
+
     window["copiaMensajes"] = copiaMensajes;
 
     // Función que procesa el formulario
@@ -106,8 +109,6 @@
     window["procesa"] = procesa;
   </script>
 
-  
-  
 </body>
 
 </html>
