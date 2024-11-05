@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="UTF-8">
-  <title>Formulario - 11:11 </title>
+  <title>Formulario - Chis11:11</title>
 
   <script src="js/registraServiceWorker.js"></script>
 
@@ -31,15 +31,15 @@
 
 <body>
 
-  <form id="form" novalidate onsubmit="procesaForm(event)" enctype="mutipart/form-data">
+  <form id="chisteForm" novalidate onsubmit="procesa(event)" enctype="mutipart/form-data">
 
     <main>
 
       <p>
         <span class="md-filled-text-field" accesskey="G">
-          <md-select-menu id="selectIntegrante" required options="opcionesDeIntegrantes"
+          <md-select-menu id="nombre" required aria-labelledby="etiquetaNombre" options="opcionesDeIntegrantes"
             oninput="copiaMensajes()"></md-select-menu>
-          <span>Integrante *</span>
+          <span id="etiquetaNombre" accesskey="N">Integrante *</span>
           <small id="supportingIntegrante">Obligatorio</small>
         </span>
       </p>
@@ -64,94 +64,48 @@
 
   </form>
 
-  <!-- <script type="module">
-    import { muestraTextoDeAyuda } from "./lib/js/muestraTextoDeAyuda.js"
-    import { exportaAHtml } from "./lib/js/exportaAHtml.js"
-    import { muestraError } from "./lib/js/muestraError.js"
-    import { submitForm } from "./lib/js/submitForm.js"
-
-    function copiaMensajes() {
-      muestraTextoDeAyuda(selectIntegrante, supportingIntegrante, "Obligatorio")
-    }
-    exportaAHtml(copiaMensajes)
-   
-  //  /**
-  //    * @param {Event} event
-  //    */
-  //    async function procesaForm(event) {
-  //       event.preventDefault(); // Previene el comportamiento por defecto del formulario
-  //       try {
-  //           copiaMensajes(); // Llama a la función para mostrar mensajes de ayuda
-  //           if (selectIntegrante.validity.valid) { // Verifica si el select es válido
-  //               const integrante = selectIntegrante.value; // Obtiene el valor seleccionado
-  //               const respuesta = await submitForm("srv/procesa.php", event); // Envía el formulario
-  //               alert(respuesta.body); // Muestra la respuesta del servidor
-  //           }
-  //       } catch (error) {
-  //           muestraError(error); // Manejo de errores
-  //       }
-  //   }
-  //   exportaAHtml(procesaForm);
-
-    /**
- * @param {Event} event
- */
-async function procesaForm(event) {
-    event.preventDefault(); // Previene el comportamiento por defecto del formulario
-    try {
-        copiaMensajes(); // Llama a la función para mostrar mensajes de ayuda
-        if (selectIntegrante.validity.valid) { // Verifica si el select es válido
-            const integrante = selectIntegrante.value; // Obtiene el valor seleccionado
-            
-            // Aquí construimos un objeto para enviar al servidor
-            const formData = new FormData();
-            formData.append('integrante', integrante); // Agregamos el integrante
-            
-            const respuesta = await submitForm("srv/procesa.php", formData); // Envía el formulario
-            alert(respuesta.body); // Muestra la respuesta del servidor
-        }
-    } catch (error) {
-        muestraError(error); // Manejo de errores
-    }
-}
-exportaAHtml(procesaForm);
-  </script> -->
-
 
   <script type="module">
-    import { muestraTextoDeAyuda } from "./lib/js/muestraTextoDeAyuda.js";
-    import { exportaAHtml } from "./lib/js/exportaAHtml.js";
-    import { muestraError } from "./lib/js/muestraError.js";
-    import { submitForm } from "./lib/js/submitForm.js";
-  
-    function copiaMensajes() {
-        muestraTextoDeAyuda(selectIntegrante, supportingIntegrante, "Obligatorio");
-    }
-    exportaAHtml(copiaMensajes);
-  
-    /**
-     * @param {Event} event
-     */
-     async function procesaForm(event) {
-    event.preventDefault(); 
-    try {
-        copiaMensajes(); 
-        if (selectIntegrante.validity.valid) { 
-            const integrante = selectIntegrante.value; 
-            const formData = new FormData(document.getElementById("form")); 
-            formData.append('integrante', integrante); 
-            
-            const respuesta = await submitForm("srv/procesa.php", event); 
-            alert(respuesta.body); 
-        }
-    } catch (error) {
-        muestraError(error); 
-    }
-}
+    import { muestraError } from "./lib/js/muestraError.js"; // Manejo de errores
+    import { muestraTextoDeAyuda } from "./lib/js/muestraTextoDeAyuda.js"; // Validación
 
-  
-    exportaAHtml(procesaForm);
+    // Función para mostrar mensajes de ayuda
+    function copiaMensajes() {
+      muestraTextoDeAyuda(nombre, supportingIntegrante, "* Obligatorio");
+    }
+    window["copiaMensajes"] = copiaMensajes;
+
+    // Función que procesa el formulario
+    function procesa(evt) {
+      evt.preventDefault();
+      try {
+        copiaMensajes();
+        if (nombre.validity.valid) {
+          const nombreSeleccionado = nombre.value;
+
+          // Enviar al servicio PHP
+          let formData = new FormData();
+          formData.append('nombre', nombreSeleccionado);
+
+          fetch('srv/procesa.php', {
+            method: 'POST',
+            body: formData
+          })
+            .then(response => response.json())
+            .then(data => {
+              alert(data.chiste); // Mostrar el chiste en un alert
+            })
+            .catch(error => {
+              muestraError(error); // Manejar el error
+            });
+        }
+      } catch (e) {
+        muestraError(e);
+      }
+    }
+    window["procesa"] = procesa;
   </script>
+
   
   
 </body>

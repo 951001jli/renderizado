@@ -1,39 +1,27 @@
 <?php
 
-require_once __DIR__ . "/../lib/php/recuperaTexto.php";
-require_once __DIR__ . "/../lib/php/devuelveJson.php";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (isset($_POST['nombre'])) {
+    $nombre = $_POST['nombre'];
 
-    error_log(print_r($_POST, true));
+    $chistes = [
+        "lys" => "¿Cuál es el colmo de Batman? Que le Robin. 🤡🤡🤡",
+        "luis" => "¿Qué tiene Darth Vader en la nevera? Helado Oscuro. 🤡🤡🤡",
+        "bran" => "¿Cómo se llama el campeón de buceo japonés? Tokofondo. 🤡🤡🤡",
+        "yani" => "Si los zombies se deshacen con el paso del tiempo, ¿zombiodegradables? 🤡🤡🤡",
+        "edgar" => "¿Cómo se dice disparo en árabe? Ahí-va-la-bala. 🤡🤡🤡"
+    ];
 
-    $integrante = $_POST['integrante'] ?? ''; 
-
-    $chiste = '';
-
-    switch ($integrante) {
-        case 'lys':
-            $chiste = "¿Cuál es el colmo de Batman? Que le Robin. 🤡🤡🤡";
-            break;
-        case 'luis':
-            $chiste = "¿Qué tiene Darth Vader en la nevera? Helado Oscuro. 🤡🤡🤡";
-            break;
-        case 'bran':
-            $chiste = "¿Cómo se llama el campeón de buceo japonés? Tokofondo. 🤡🤡🤡";
-            break;
-        case 'yani':
-            $chiste = "Si los zombies se deshacen con el paso del tiempo, ¿zombiodegradables? 🤡🤡🤡";
-            break;
-        case 'edgar':
-            $chiste = "¿Cómo se dice disparo en árabe? Ahí-va-la-bala. 🤡🤡🤡";
-            break;
-        default:
-            $chiste = "No tengo chistes para ese integrante.";
-            break;
+    if (array_key_exists($nombre, $chistes)) {
+        $chiste = $chistes[$nombre];
+    } else {
+        $chiste = "No hay chistes.";
     }
 
-    echo json_encode(['body' => $chiste]);
+    echo json_encode(["chiste" => $chiste]);
 } else {
-    echo json_encode(['body' => 'Método no permitido.']);
+   
+    echo json_encode(["error" => "No se envió ningún nombre."]);
 }
+
 ?>
