@@ -7,28 +7,28 @@ try {
     // Lista de personas con nombres
     $lista = [
         [
-            "nombre" => "Lizet Garduño"
+            "nombre" => "Lizet Garduno"
         ],
         [
             "nombre" => "Luis Izquierdo"
         ],
         [
-            "nombre" => "Brandon Hernández"
+            "nombre" => "Brandon Hernandez"
         ],
         [
             "nombre" => "Yanitzin Martinez"
         ],
         [
-            "nombre" => "Edgar Ortíz"
+            "nombre" => "Edgar Ortiz"
         ]
     ];
 
     $chistes = [
-        "Lizet Garduño" => "¿Cuál es el colmo de Batman? Que le Robin.",
+        "Lizet Garduno" => "¿Cuál es el colmo de Batman? Que le Robin.",
         "Luis Izquierdo" => "¿Qué tiene Darth Vader en la nevera? Helado Oscuro.",
-        "Brandon Hernández" => "¿Cómo se llama el campeón de buceo japonés? Tokofondo.",
+        "Brandon Hernandez" => "¿Cómo se llama el campeón de buceo japonés? Tokofondo.",
         "Yanitzin Martinez" => "Sí los zombies se deshacen con el paso del tiempo ¿zombiodegradables?",
-        "Edgar Ortíz" => "¿Cómo se dice disparo en árabe? Ahí-va-la-bala."
+        "Edgar Ortiz" => "¿Cómo se dice disparo en árabe? Ahí-va-la-bala."
     ];
 
     // Genera el código HTML de la lista con estilo Material Design.
